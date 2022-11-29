@@ -2,8 +2,6 @@
 import { Component } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
 import M from 'materialize-css'
-import '../estilo/estilo.css'
-
 
 export default class ListaCliente extends Component<any> {
     componentDidMount() {
