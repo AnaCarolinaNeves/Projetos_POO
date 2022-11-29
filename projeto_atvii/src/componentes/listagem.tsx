@@ -24,9 +24,9 @@ export default class Listagem extends Component<any>{
                     </div>
     
                     {/* Clientes que mais consumiram */}
-                    <div id="clientesMaisConsumiram" className="col s12">
+                    <div id="clientesMaisConsumiram" >
                         <div className="row">
-                            <div className="col s6">
+                            <div className="col s12" >
                                 <table className="centered responsive-table ">
                                     <thead>
                                         <tr>
@@ -56,12 +56,13 @@ export default class Listagem extends Component<any>{
                                             <td>8</td>
                                             <td>8</td>
                                         </tr>
-    
                                     </tbody>
                                 </table>
                             </div>
-    
-                            <div className="col s6">
+                        </div>
+                        <hr></hr>
+                        <div className="row">
+                            <div className="col s12" >
                                 <table className="centered responsive-table ">
                                     <thead>
                                         <tr>
@@ -177,7 +178,7 @@ export default class Listagem extends Component<any>{
                     {/* Serviços e produtos mais consumidos */}
                     <div id="produtosServicosMaisConsumidos" className="col s12">
                         <div className="row" >
-                            <div className="col s6" >
+                            <div className="col s12">
                                 <table className="centered responsive-table ">
                                     <thead>
                                         <tr>
@@ -198,8 +199,10 @@ export default class Listagem extends Component<any>{
                                     </tbody>
                                 </table>
                             </div>
-    
-                            <div className="col s6" >
+                            </div>
+                            <hr></hr>
+                            <div className="row">
+                            <div className="col s12">
                                 <table className="centered responsive-table ">
                                     <thead>
                                         <tr>
