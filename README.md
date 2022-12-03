@@ -1,6 +1,6 @@
 <h4> Projeto World Beauty </h4>
 
-Projeto desensolvido na disciplina de Programação Orientada a Objetos em dupla com a estudante Ana Carolina. Neste projeto, foi realizado uma aplicação web (react) juntamente com a estruturação no back-end (typescript e banco de dados) para tornar viável o gerenciamento de registros e cadastro de clientes, serviços e produtos do salão de beleza World Beauty.
+Projeto desenvolvido na disciplina de Programação Orientada a Objetos em dupla com a estudante Ana Carolina. Neste projeto, foi realizado uma aplicação web (react) juntamente com a estruturação no back-end (typescript e banco de dados) para tornar viável o gerenciamento de registros e cadastro de clientes, serviços e produtos do salão de beleza World Beauty.
 
 | Nome | GitHub | 
 |:-----:|:----------:|
