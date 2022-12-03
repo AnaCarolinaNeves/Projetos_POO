@@ -1,6 +1,8 @@
 import {} from "mysql2";
 const sequelize = require("sequelize")
 const connection = require("./connect")
+
+
 const cadastroCliente = connection.define("cadastroCliente", {
     id: {
         type:sequelize.INTEGER, 
@@ -22,6 +24,18 @@ const cadastroCliente = connection.define("cadastroCliente", {
         allowNull: false
     },
     genero: {
+        type:sequelize.STRING,
+        allowNull: false
+    },
+    rg: {
+        type:sequelize.STRING,
+        allowNull: false
+    },
+    ddd: {
+        type:sequelize.STRING,
+        allowNull: false
+    },
+    numero: {
         type:sequelize.STRING,
         allowNull: false
     }

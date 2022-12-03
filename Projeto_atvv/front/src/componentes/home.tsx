@@ -13,10 +13,10 @@ export default class Home extends Component<any>{
                             <div className="card-content white-text">
                                 <span className="card-title">Cliente</span>
                             </div>
-                            <div className="card-action">
-                                <a className="white-text" href="/listaCliente">Listar clientes</a>
+                            <div className="card-action" style={{background:'white'}}>
+                                <a className="black-text" href="/listaCliente">Listar clientes</a>
                                 <br/>
-                                <a className="white-text" href="/formularioCadastroCliente">Cadastrar cliente</a>
+                                <a className="black-text" href="/formularioCadastroCliente">Cadastrar cliente</a>
                             </div>
                         </div>
                     </div>
@@ -25,10 +25,10 @@ export default class Home extends Component<any>{
                             <div className="card-content white-text ">
                                 <span className="card-title">Produto</span>
                             </div>
-                            <div className="card-action">
-                                <a className="white-text" href="listaProduto">Listar produtos</a>
+                            <div className="card-action" style={{background:'white'}}>
+                                <a className="black-text" href="listaProduto">Listar produtos</a>
                                 <br/>
-                                <a className="white-text" href="formularioCadastroProduto">Cadastrar produto</a>
+                                <a className="black-text" href="formularioCadastroProduto">Cadastrar produto</a>
                             </div>
                         </div>
                     </div>
@@ -37,10 +37,10 @@ export default class Home extends Component<any>{
                             <div className="card-content white-text">
                                 <span className="card-title">Serviço</span>
                             </div>
-                            <div className="card-action text-center">
-                                <a className="white-text" href="listaServico">Listar serviços</a>
+                            <div className="card-action" style={{background:'white'}}>
+                                <a className="black-text" href="listaServico">Listar serviços</a>
                                 <br/>
-                                <a className="white-text" href="formularioCadastroServico">Cadastrar serviço</a>
+                                <a className="black-text" href="formularioCadastroServico">Cadastrar serviço</a>
                             </div>
                         </div>
                     </div>

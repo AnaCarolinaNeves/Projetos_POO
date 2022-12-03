@@ -2,265 +2,522 @@ import { Component } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
 import M from 'materialize-css'
 import '../estilo/estilo.css'
+import axios from "axios";
 
-export default class Listagem extends Component<any>{
+type table = {
+    id: string,
+    name: string,
+    nome: string,
+    cpf: string,
+    precoProduto: number,
+    precoServico: number,
+    preco: number,
+    dadosClienteProduto: any[],
+    dadosClienteServico: any[],
+    consumoProduto: any[],
+    consumoServico: any[],
+    quantidadeProduto: any[],
+    quantidadeServico: any[],
+    produtoMaisConsumido: any[],
+    servicoMaisCosumido: any[],
+    resultProdutoMasculino: any[],
+    resultProdutoFeminino: any[],
+    resultServicoMasculino: any[],
+    resultServicoFeminino: any[]
+}
+
+
+export default class Listagem extends Component<{}, table>{
+
+    constructor(props: any){
+        super(props)
+        this.state = {
+            id: '',
+            name: '',
+            nome: '',
+            cpf: '',
+            precoProduto: 0,
+            precoServico: 0, 
+            preco: 0,
+            dadosClienteProduto: [],
+            dadosClienteServico: [],
+            consumoProduto: [],
+            consumoServico: [], 
+            quantidadeProduto: [], 
+            quantidadeServico: [],
+            produtoMaisConsumido: [], 
+            servicoMaisCosumido: [], 
+            resultProdutoMasculino: [],
+            resultProdutoFeminino: [], 
+            resultServicoMasculino: [],
+            resultServicoFeminino: [] 
+        }
+    }
+
     componentDidMount() {
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.tabs');
             M.Tabs.init(elems);
         });
+        // axios.get('http://localhost:2001/clienteProdutos/clienteConsumoValor').then(res => {
+        //     let dados = res.data
+        //     dados.sort(function(a:any,b:any){
+        //         return b.valor - a.valor
+        //     })
+        //     this.setState({
+        //         dadosClienteProduto: dados
+        //     })   
+        // }).catch(err => {
+        //     console.log('fasf');
+            
+        // })
+        // axios.get('http://localhost:2001/clienteServicos/clienteConsumoValor').then(res => {
+        //     let dados = res.data
+        //     dados.sort(function(a:any,b:any){
+        //         return b.valor - a.valor
+        //     })
+        //     this.setState({
+        //         dadosClienteServico: dados
+        //     })   
+        // }).catch(err => {
+        //     console.log('fasf');
+            
+        // })
+        // axios.get('http://localhost:2001/clienteProdutos/listagemClienteProdutoConsumidoQuantidade').then(res => {
+        //     let dados = res.data
+        //     dados.sort(function(a:any,b:any){
+        //         return b.consumo - a.consumo
+        //     })
+        //     this.setState({
+        //         consumoProduto: dados
+        //     })   
+        // }).catch(err => {
+        //     console.log('fasf');
+            
+        // })
+        // axios.get('http://localhost:2001/clienteProdutos/listagemClienteProdutoConsumidoQuantidade').then(res => {
+        //     let dados = res.data
+        //     dados.sort(function(a:any,b:any){
+        //         return a.consumo - b.consumo
+        //     })
+        //     this.setState({
+        //         quantidadeProduto: dados
+        //     })   
+        // }).catch(err => {
+        //     console.log('fasf');
+            
+        // })
+        // axios.get('http://localhost:2001/clienteServicos/listagemClienteServicoConsumidoQuantidade').then(res => {
+        //     let dados = res.data
+        //     dados.sort(function(a:any,b:any){
+        //         return b.consumo - a.consumo
+        //     })
+        //     this.setState({
+        //         consumoServico: dados
+        //     })   
+        // }).catch(err => {
+        //     console.log('fasf');
+            
+        // })
+        // axios.get('http://localhost:2001/clienteServicos/listagemClienteServicoConsumidoQuantidade').then(res => {
+        //     let dados = res.data
+        //     dados.sort(function(a:any,b:any){
+        //         return a.consumo - b.consumo
+        //     })
+        //     this.setState({
+        //         quantidadeServico: dados
+        //     })   
+        // }).catch(err => {
+        //     console.log('fasf');
+            
+        // })
+        // axios.get('http://localhost:2001/clienteProdutos/listagemProdutoMaisConsumido').then(res => {
+        //     let dados = res.data
+        //     dados.sort(function(a:any,b:any){
+        //         return b.consumo - a.consumo
+        //     })
+        //     this.setState({
+        //         produtoMaisConsumido: dados
+        //     })   
+        // }).catch(err => {
+        //     console.log('fasf');
+            
+        // })
+        // axios.get('http://localhost:2001/clienteServicos/listagemServicoMaisConsumido').then(res => {
+        //     let dados = res.data
+        //     dados.sort(function(a:any,b:any){
+        //         return b.consumo - a.consumo
+        //     })
+        //     this.setState({
+        //         servicoMaisCosumido: dados
+        //     })   
+        // }).catch(err => {
+        //     console.log('fasf');
+            
+        // })
+        // axios.get('http://localhost:2001/clienteProdutos/generoMasculino').then(res => {
+        //     let dados = res.data
+        //     dados.sort(function(a:any,b:any){
+        //         return b.quantidade - a.quantidade
+        //     })
+        //     this.setState({
+        //         resultProdutoMasculino: dados
+        //     })   
+        // }).catch(err => {
+        //     console.log('fasf');
+            
+        // })
+        // axios.get('http://localhost:2001/clienteProdutos/generoFeminino').then(res => {
+        //     let dados = res.data
+        //     dados.sort(function(a:any,b:any){
+        //         return b.quantidade - a.quantidade
+        //     })
+        //     this.setState({
+        //         resultProdutoFeminino: dados
+        //     })   
+        // }).catch(err => {
+        //     console.log('fasf');
+            
+        // })
+        // axios.get('http://localhost:2001/clienteServicos/generoMasculino').then(res => {
+        //     let dados = res.data
+        //     dados.sort(function(a:any,b:any){
+        //         return b.quantidade - a.quantidade
+        //     })
+        //     this.setState({
+        //         resultServicoMasculino: dados
+        //     })   
+        // }).catch(err => {
+        //     console.log('fasf');
+            
+        // })
+        // axios.get('http://localhost:2001/clienteServicos/generoFeminino').then(res => {
+        //     let dados = res.data
+        //     dados.sort(function(a:any,b:any){
+        //         return b.quantidade - a.quantidade
+        //     })
+        //     this.setState({
+        //         resultServicoFeminino: dados
+        //     })   
+        // }).catch(err => {
+        //     console.log('fasf');
+            
+        // })
     }
+
+
     render() {
         return (
             <>
+                
+                <div className='container center'>
+                <h4> <strong> Listagens de Consumo </strong> </h4>
+                <br></br>
                 <div className="row">
-                    <div className="col s12">
-                        <ul className="tabs">
-                            <li className="tab col s3"><a className='active' href='#clientesMaisConsumiram'>Clientes que mais consumiram</a></li>
-                            <li className="tab col s3"><a href="#generoClientes">Gênero clientes</a></li>
-                            <li className="tab col s3"><a href="#produtosServicosMaisConsumidos">Produtos e serviços mais consumidos</a></li>
-                            <li className="tab col s3"><a href="#clientesMenosConsumiram">Clientes que menos consumiram</a></li>
+                    <div className="">
+                        <ul className="tabs-swipe-demo tabs tabsConsumo ">
+                            <li className="tab col s3"><a href="#1" style={{color: 'black', fontSize: '10px'}}>Cliente Consumo Valor</a></li>
+                            <li className="tab col s2"><a href="#2" style={{color: 'black', fontSize: '10px'}}>Cliente Maior Qtd</a></li>
+                            <li className="tab col s3"><a href="#3" style={{color: 'black', fontSize: '10px'}}>Cliente Menor Consumo</a></li>
+                            <li className="tab col s2"><a href="#4" style={{color: 'black', fontSize: '10px'}}>Prod/Serv Consumo</a></li>
+                            <li className="tab col s2"><a href="#5" style={{color: 'black', fontSize: '10px'}}>Consumo Genero</a></li>
                         </ul>
                     </div>
-    
-                    {/* Clientes que mais consumiram */}
-                    <div id="clientesMaisConsumiram" className="col s12">
-                        <div className="row">
-                            <div className="col s6">
-                                <table className="centered responsive-table ">
-                                    <thead>
-                                        <tr>
-                                            <th>N°</th>
-                                            <th>Nome</th>
-                                            <th>Qtd produtos consumidos</th>
-                                            <th>Qtd serviços utilizados</th>
-                                        </tr>
-                                    </thead>
-    
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Jeniffer</td>
-                                            <td>16</td>
-                                            <td>12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Ana</td>
-                                            <td>12</td>
-                                            <td>10</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Apolo</td>
-                                            <td>8</td>
-                                            <td>8</td>
-                                        </tr>
-    
-                                    </tbody>
-                                </table>
-                            </div>
-    
-                            <div className="col s6">
-                                <table className="centered responsive-table ">
-                                    <thead>
-                                        <tr>
-                                            <th>N°</th>
-                                            <th>Nome</th>
-                                            <th>Valor total de produtos consumidos</th>
-                                            <th>Valor total de serviços utilizados</th>
-                                        </tr>
-                                    </thead>
-    
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Jeniffer</td>
-                                            <td>R$160</td>
-                                            <td>R$120</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Ana</td>
-                                            <td>R$120</td>
-                                            <td>R$100</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Apolo</td>
-                                            <td>R$80</td>
-                                            <td>R$80</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    {/* Gênero clientes */}
-                    <div id="generoClientes" className="col s12">
-                        <div className="row">
-                            <div className="col s12" >
-                                <table className="centered responsive-table ">
+                    <div id="1" className="col s12">
+                        <form>
+                            <h5 className='generoConsumoFont'>Produto</h5>
+                            <div>
+                                <table className='responsive-table centered'>
                                     <thead>
                                         <tr>
                                             <th>Nome</th>
-                                            <th>Gênero</th>
+                                            <th>CPF</th>
+                                            <th>Valor</th>
                                         </tr>
                                     </thead>
-    
                                     <tbody>
-                                        <tr>
-                                            <td>Jeniffer</td>
-                                            <td>F</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ana</td>
-                                            <td>F</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Apolo</td>
-                                            <td>M</td>
-                                        </tr>
+                                        {this.state.dadosClienteProduto.map(itemP => {
+                                            return(
+                                                <tr>
+                                                    <td>{itemP.nome}</td>
+                                                    <td>{itemP.cpf}</td>
+                                                    <td>R$ {itemP.valor}</td>
+                                                </tr>
+                                            )
+                                        })}
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <hr></hr>
-                        <h6 style={{ display: 'flex', justifyContent: 'center' }}>Produtos e serviços mais consumidos por gênero</h6>
-                        <div className="row">
-                            <div className="col s6" >
-                                <table className="centered responsive-table ">
+                            <h5 className='generoConsumoFont'>Serviço</h5>
+                            <div>
+                                <table className='responsive-table centered'>
                                     <thead>
                                         <tr>
-                                            <th>Produto</th>
-                                            <th>Gênero</th>
+                                            <th>Nome</th>
+                                            <th>CPF</th>
+                                            <th>Valor</th>
                                         </tr>
                                     </thead>
-    
                                     <tbody>
-                                        <tr>
-                                            <td>Shampoo</td>
-                                            <td>F</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Shampoo</td>
-                                            <td>M</td>
-                                        </tr>
+                                        {this.state.dadosClienteServico.map(itemP => {
+                                                return(
+                                                    <tr>
+                                                        <td>{itemP.nome}</td>
+                                                        <td>{itemP.cpf}</td>
+                                                        <td>R$ {itemP.valor}</td>
+                                                    </tr>
+                                                )
+                                            })}
                                     </tbody>
                                 </table>
                             </div>
-    
-                            <div className="col s6" >
-                                <table className="centered responsive-table ">
-                                    <thead>
-                                        <tr>
-                                            <th>Serviço</th>
-                                            <th>Gênero</th>
-                                        </tr>
-                                    </thead>
-    
-                                    <tbody>
-                                        <tr>
-                                            <td>Pedicure</td>
-                                            <td>F</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Corte de cabelo</td>
-                                            <td>M</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        </form>
                     </div>
-    
-                    {/* Serviços e produtos mais consumidos */}
-                    <div id="produtosServicosMaisConsumidos" className="col s12">
-                        <div className="row" >
-                            <div className="col s6" >
-                                <table className="centered responsive-table ">
+
+
+                    <div id="2" className="col s12">
+                        <form>
+                            <h5 className='generoConsumoFont'>Produto</h5>
+                            <div>
+                                <table className='responsive-table centered'>
                                     <thead>
                                         <tr>
-                                            <th>Produto</th>
-                                            <th>Qtd de pedidos</th>
+                                            <th>Nome</th>
+                                            <th>CPF</th>
+                                            <th>Total Consumido</th>
                                         </tr>
                                     </thead>
-    
                                     <tbody>
-                                        <tr>
-                                            <td>Shampoo</td>
-                                            <td>30</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pente</td>
-                                            <td>25</td>
-                                        </tr>
+                                        {this.state.consumoProduto.map(item => {
+                                            return(
+                                                <tr>
+                                                    <td>{item.nome}</td>
+                                                    <td>{item.cpf}</td>
+                                                    <td>{item.consumo}</td>
+                                                </tr>
+                                            )
+                                        })}
                                     </tbody>
                                 </table>
                             </div>
-    
-                            <div className="col s6" >
-                                <table className="centered responsive-table ">
+                            <h5 className='generoConsumoFont'>Serviço</h5>
+                            <div>
+                                <table className='responsive-table centered'>
                                     <thead>
                                         <tr>
-                                            <th>Serviço</th>
-                                            <th>Qtd de pedidos</th>
+                                            <th>Nome</th>
+                                            <th>CPF</th>
+                                            <th>Total Consumido</th>
                                         </tr>
                                     </thead>
-    
                                     <tbody>
-                                        <tr>
-                                            <td>Pedicure</td>
-                                            <td>7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Corte de cabelo</td>
-                                            <td>6</td>
-                                        </tr>
+                                        {this.state.consumoServico.map(item => {
+                                            return(
+                                                <tr>
+                                                    <td>{item.nome}</td>
+                                                    <td>{item.cpf}</td>
+                                                    <td>{item.consumo}</td>
+                                                </tr>
+                                            )
+                                        })}
                                     </tbody>
                                 </table>
                             </div>
+                        </form>
+
+                    </div>
+
+                    <div id="3" className="col s12">
+                    <form>
+                        <h5 className='generoConsumoFont'>Produto</h5>
+                        <div>
+                            <table className='responsive-table centered'>
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                        <th>Total Consumido</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.state.quantidadeProduto.map(item => {
+                                        return(
+                                            <tr>
+                                                <td>{item.nome}</td>
+                                                <td>{item.cpf}</td>
+                                                <td>{item.consumo}</td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
                         </div>
+                        <h5 className='generoConsumoFont'>Serviço</h5>
+                        <div>
+                            <table className='responsive-table centered'>
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                        <th>Total Consumido</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.state.quantidadeServico.map(item => {
+                                        return(
+                                            <tr>
+                                                <td>{item.nome}</td>
+                                                <td>{item.cpf}</td>
+                                                <td>{item.consumo}</td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+
+
                     </div>
-    
-                    {/* Clientes que menos consumiram */}
-                    <div id="clientesMenosConsumiram" className="col s12">
-                    <div className="row">
-                                <div className="col s12">
-                                    <table className="centered responsive-table ">
-                                        <thead>
-                                            <tr>
-                                                <th>N°</th>
-                                                <th>Nome</th>
-                                                <th>Qtd produtos consumidos</th>
-                                                <th>Qtd serviços utilizados</th>
-                                            </tr>
-                                        </thead>
-    
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Apolo</td>
-                                                <td>5</td>
-                                                <td>4</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Jeniffer</td>
-                                                <td>7</td>
-                                                <td>6</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Ana</td>
-                                                <td>8</td>
-                                                <td>9</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+
+                    <div id="4" className="col s12">
+                        <form>
+                            <h5 className='generoConsumoFont'>Produto</h5>
+                            <div>
+                                <table className='responsive-table centered'>
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Total Consumido</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.produtoMaisConsumido.map(item => {
+                                            return(
+                                                <tr>
+                                                    <td>{item.nome}</td>
+                                                    <td>{item.consumo}</td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </table>
                             </div>
+                            <h5 className='generoConsumoFont'>Serviço</h5>
+                            <div>
+                                <table className='responsive-table centered'>
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Total Consumido</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.servicoMaisCosumido.map(item => {
+                                            return(
+                                                <tr>
+                                                    <td>{item.nome}</td>
+                                                    <td>{item.consumo}</td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+
                     </div>
+
+                    <div id="5" className="col s12">
+                        <form>
+                        <h5 className='generoConsumoFont'>Produtos com consumidos pelo publico Masculino </h5>
+                            <div>
+                                <table className='responsive-table centered'>
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Total Consumido</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.resultProdutoMasculino.map(item => {
+                                            return(
+                                                <tr>
+                                                    <td>{item.nome}</td>
+                                                    <td>{item.quantidade}</td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h5 className='generoConsumoFont'>Serviços com consumidos pelo publico Masculino</h5>
+                            <div>
+                                <table className='responsive-table centered'>
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Total Consumido</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.resultServicoMasculino.map(item => {
+                                            return(
+                                                <tr>
+                                                    <td>{item.nome}</td>
+                                                    <td>{item.quantidade}</td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h5 className='generoConsumoFont'>Produtos com consumidos pelo publico Feminino </h5>
+                            <div>
+                                <table className='responsive-table centered'>
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Total Consumido</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.resultProdutoFeminino.map(item => {
+                                            return(
+                                                <tr>
+                                                    <td>{item.nome}</td>
+                                                    <td>{item.quantidade}</td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h5 className='generoConsumoFont'>Serviços com consumidos pelo publico Feminino</h5>
+                            <div>
+                                <table className='responsive-table centered'>
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Total Consumido</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.resultServicoFeminino.map(item => {
+                                            return(
+                                                <tr>
+                                                    <td>{item.nome}</td>
+                                                    <td>{item.quantidade}</td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
                 </div>
             </>
         )

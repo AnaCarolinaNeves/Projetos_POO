@@ -9,6 +9,21 @@ rotasProduto.get("/Produtos", async(req:Request, res: Response, next: NextFuncti
     res.status(StatusCodes.OK).send(produtosLista)
 
 })
+
+rotasProduto.get('/Produtos/:uuid', async(req: Request<{ uuid: string }>, res: Response, next: NextFunction)=>{
+    const uuid = req.params.uuid;
+    const project = await tabelaPro.findOne({ where: { id: uuid } })
+    
+    if (project === null) {
+        return res.status(StatusCodes.NOT_FOUND).json({
+            erro: true,
+            mensagem: "Produto não cadastrado!"
+        })
+    } else {
+        return res.json(project)
+    }
+})
+
 rotasProduto.post("/CadastroProduto", async (req:Request, res: Response, next: NextFunction) =>{
     const cadastroProduto = req.body;
 
